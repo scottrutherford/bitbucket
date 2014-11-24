@@ -200,13 +200,11 @@ module BitBucket
       normalize! params
       _merge_user_into_params!(params) unless params.has_key?('user')
       filter! %w[ user type ], params
+      user_name = params.delete("user")
 
-      response = #if (user_name = params.delete("user"))
-                 #  get_request("/users/#{user_name}", params)
-                 #else
-                   # For authenticated user
-                   get_request("/user/repositories", params)
-                 #end
+      # now uses v2.0 API 
+      # https://confluence.atlassian.com/display/BITBUCKET/repositories+Endpoint#repositoriesEndpoint-GETalistofrepositoriesforanaccount
+      response = get_request("/repositories/#{user_name}", params)
       return response unless block_given?
       response.each { |el| yield el }
     end
