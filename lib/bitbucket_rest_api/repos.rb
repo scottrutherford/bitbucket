@@ -10,7 +10,8 @@ module BitBucket
                  :Keys        => 'keys',
                  :Services    => 'services',
                  :Following   => 'following',
-                 :Sources     => 'sources'
+                 :Sources     => 'sources',
+                 :Commits     => 'commits'
 
     DEFAULT_REPO_OPTIONS = {
         "website"         => "",
