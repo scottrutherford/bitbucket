@@ -64,6 +64,11 @@ module BitBucket
       @services ||= ApiFactory.new 'Repos::Services'
     end
 
+    # Access to Repos::Commits API
+    def commits
+      @commits ||= ApiFactory.new 'Repos::Commits'
+    end
+
     # List branches
     #
     # = Examples
